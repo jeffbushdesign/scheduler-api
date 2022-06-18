@@ -31,7 +31,7 @@ function read(file) {
 
 module.exports = function application(
   ENV,
-  actions = { updateAppointment: () => {} }
+  actions = { updateAppointment: () => { } }
 ) {
   app.use(cors());
   app.use(helmet());
@@ -51,17 +51,17 @@ module.exports = function application(
           db.query(create)
             .then(() => db.query(seed))
             .then(() => {
-              console.log("Database Reset");
+
               response.status(200).send("Database Reset");
             });
         });
       })
       .catch(error => {
-        console.log(`Error setting up the reset route: ${error}`);
+        console.error(`Error setting up the reset route: ${error}`);
       });
   }
 
-  app.close = function() {
+  app.close = function () {
     return db.end();
   };
 

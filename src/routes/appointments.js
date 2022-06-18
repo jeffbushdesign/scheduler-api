@@ -48,7 +48,7 @@ module.exports = (db, updateAppointment) => {
           updateAppointment(Number(request.params.id), request.body.interview);
         }, 1000);
       })
-      .catch(error => console.log(error));
+      .catch(error => console.error(error));
   });
 
   router.delete("/appointments/:id", (request, response) => {
